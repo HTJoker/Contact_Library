@@ -11,20 +11,16 @@ export function CreateContact() {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
-  const createContact = api.contact.create.useMutation({
-    onSuccess: () => {
-      alert("Contact created!");
-    },
-  });
+  const createContact = api.contact.create.useMutation();
+
+  const handleSubmit = async (e: any) => {
+    // e.preventDefault();
+    createContact.mutate({ name, address, phone });
+    router.push("/");
+  };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        createContact.mutate({ name, address, phone });
-      }}
-      className="flex flex-col gap-2"
-    >
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
       <input
         type="text"
         placeholder="Name"
