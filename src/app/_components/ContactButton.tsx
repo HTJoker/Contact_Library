@@ -3,7 +3,7 @@
 import { api } from "@/trpc/server";
 
 type buttonProps = {
-  contactId: string;
+  contactId: number;
 };
 
 const ContactButton = ({ contactId }: buttonProps) => {

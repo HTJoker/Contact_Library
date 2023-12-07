@@ -13,8 +13,7 @@ export function CreateContact() {
 
   const createContact = api.contact.create.useMutation();
 
-  const handleSubmit = async (e: any) => {
-    // e.preventDefault();
+  const handleSubmit = async () => {
     createContact.mutate({ name, address, phone });
     router.push("/");
   };
